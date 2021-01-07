@@ -73,5 +73,9 @@ func ServerResponseUnMarshal(b []byte) (string, error) {
 
 	_ = json.Unmarshal(b, r)
 
-	return r.Data, errors.New(r.Error)
+	if r.Error != "" {
+		return "", errors.New(r.Error)
+	}
+
+	return r.Data, nil
 }
