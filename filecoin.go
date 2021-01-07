@@ -2,6 +2,7 @@ package safecustody_filecoin
 
 import (
 	"encoding/json"
+	"errors"
 	"github.com/filecoin-project/go-address"
 	"time"
 )
@@ -66,11 +67,11 @@ func ServerResponseMarshal(data string, err string) []byte {
 	return b
 }
 
-func ServerResponseUnMarshal(b []byte) *Response {
+func ServerResponseUnMarshal(b []byte) (string, error) {
 
 	r := &Response{}
 
 	_ = json.Unmarshal(b, r)
 
-	return r
+	return r.Data, errors.New(r.Error)
 }
