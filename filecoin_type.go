@@ -41,3 +41,8 @@ type Response struct {
 	Error string `json:"error"`
 	Data  string `json:"data"`
 }
+
+type RespGas struct {
+	JsonRpc string  `json:"jsonrpc"`
+	Result  GasBody `json:"result"`
+}
