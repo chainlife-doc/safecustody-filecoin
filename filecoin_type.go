@@ -23,6 +23,7 @@ type GasBody struct {
 	GasPremium string  `json:"GasPremium"`
 	Method     int     `json:"Method"`
 	Params     []byte  `json:"Params"`
+	T          int64   `json:"t"`
 }
 
 type MaxFee struct {
@@ -34,7 +35,6 @@ type JsonRpc struct {
 	Method  string      `json:"method"`
 	Params  interface{} `json:"params"`
 	Id      int         `json:"id"`
-	T       int64       `json:"t"`
 }
 
 type Response struct {

@@ -26,7 +26,7 @@ func MarshalGetNonceData(addr address.Address) []byte {
 	return b
 }
 
-func Gas(toAddr, fromAddr, amount, path string) []byte {
+func Gas(toAddr, fromAddr, amount string) []byte {
 	g := GasBody{
 		Version:    0,
 		To:         toAddr,
@@ -37,6 +37,7 @@ func Gas(toAddr, fromAddr, amount, path string) []byte {
 		GasPremium: "0",
 		Method:     0,
 		Params:     nil,
+		T:          time.Now().Unix(),
 	}
 
 	b, _ := json.Marshal(g)
@@ -59,7 +60,6 @@ func GasEstimateMessageGas(gasBody GasBody) []byte {
 		"Filecoin.GasEstimateMessageGas",
 		param,
 		1,
-		time.Now().Unix(),
 	})
 	return b
 }
